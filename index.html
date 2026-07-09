@@ -40,9 +40,53 @@
       border-bottom: 1px solid var(--gray-mid);
     }
 
-    .nav-logo img {
-      height: 32px;
+    /* ── NAVBAR NUEVO ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 80px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    .nav-brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-brand img {
+      height: 28px;
       object-fit: contain;
+    }
+
+    .nav-brand-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .nav-brand-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      line-height: 1;
     }
 
     .nav-links {
@@ -531,7 +575,179 @@
     .dropdown-menu a:hover { background: var(--gray-light); }
     .dropdown-menu a::after { display: none; }
 
-    /* ── RESPONSIVE ── */
+    /* ── GALLERY ── */
+    .product-img { position: relative; }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.85);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+    .gallery-arrow:hover { background: white; }
+    .gallery-arrow.prev { left: 6px; }
+    .gallery-arrow.next { right: 6px; }
+
+    .gallery-dots {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+    }
+
+    .gallery-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .gallery-dot.active { background: var(--black); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: white;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px; right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      color: var(--black);
+    }
+
+    .modal-gallery {
+      position: relative;
+      aspect-ratio: 1/1;
+      background: var(--gray-light);
+      overflow: hidden;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .modal-gallery img.active { display: block; }
+
+    .modal-gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.85);
+      border: none;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .modal-gallery-arrow.prev { left: 10px; }
+    .modal-gallery-arrow.next { right: 10px; }
+
+    .modal-info {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .modal-desc {
+      font-size: 13px;
+      color: var(--gray-dark);
+      line-height: 1.6;
+    }
+
+    .modal-prices {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .modal-price-sale {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .modal-price-original {
+      font-size: 14px;
+      color: var(--gray-dark);
+      text-decoration: line-through;
+    }
+
+    .modal-wa {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      justify-content: center;
+      margin-top: auto;
+      transition: background 0.2s;
+    }
+    .modal-wa:hover { background: #1ebe5d; }
+
+    @media (max-width: 600px) {
+      .modal { grid-template-columns: 1fr; }
+      .modal-gallery { aspect-ratio: 4/3; }
+    }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-contact { display: none; }
@@ -553,11 +769,6 @@
 
   <!-- NAVBAR -->
   <nav>
-    <div class="nav-logo">
-      <!-- Reemplazá el src con la URL de tu logo -->
-      <img src="https://dcdn-us.mitiendanube.com/stores/006/293/646/themes/common/logo-943069378-1761907797-790157f2150d440bfd52888374ece2191761907797-640-0.webp" alt="Luke The Dealer" onerror="this.style.display='none'" />
-    </div>
-
     <ul class="nav-links">
       <li class="nav-dropdown">
         <a href="#shop">Shop ▾</a>
@@ -574,6 +785,12 @@
       <li><a href="#sale">Sale</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
+
+    <div class="nav-brand">
+      <img src="img/logo.jpeg" alt="Luke The Dealer" />
+      <span class="nav-brand-name">Luke The Dealer</span>
+      <span class="nav-brand-sub">Fashion Dealer</span>
+    </div>
 
     <span class="nav-contact">📍 Buenos Aires</span>
   </nav>
@@ -663,20 +880,23 @@
     <div class="sale-grid">
 
       <!-- Producto 1 -->
-      <div class="product-card">
+      <div class="product-card" onclick="openModal('pollera')">
         <span class="badge">23% OFF</span>
         <div class="product-img">
-          <img src="img/asd4.jpg" alt="Pollera Nike WMNS ACG Smith Summit Zip-Off" />
+          <img src="img/asd4.jpg" alt="Pollera Nike WMNS ACG" />
+          <button class="gallery-arrow prev" onclick="event.stopPropagation();prevImg('pollera-card')">‹</button>
+          <button class="gallery-arrow next" onclick="event.stopPropagation();nextImg('pollera-card')">›</button>
+          <div class="gallery-dots" id="pollera-card-dots"></div>
         </div>
         <div class="product-info">
           <div class="product-name">Pollera Nike WMNS ACG Smith Summit Zip-Off</div>
-          <div style="font-size:11px; color:#888; margin: 4px 0 8px; font-family:'Barlow',sans-serif; line-height:1.4;">Negro · Talle S y M · Importada · ACG = All Conditions Gear</div>
+          <div style="font-size:11px; color:#888; margin: 4px 0 8px; font-family:'Barlow',sans-serif; line-height:1.4;">Negro · Talle S y M · Importada</div>
           <div class="product-prices">
             <span class="price-sale">$192.640</span>
             <span class="price-original">$250.000</span>
           </div>
           <div class="product-action">
-            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Pollera%20Nike%20WMNS%20ACG%20Smith%20Summit%20Zip-Off" class="wa-btn" target="_blank">
+            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Pollera%20Nike%20WMNS%20ACG%20Smith%20Summit%20Zip-Off" class="wa-btn" target="_blank" onclick="event.stopPropagation()">
               <span class="wa-icon">💬</span> Consultar
             </a>
           </div>
@@ -684,20 +904,23 @@
       </div>
 
       <!-- Producto 2 -->
-      <div class="product-card">
+      <div class="product-card" onclick="openModal('campera')">
         <span class="badge">13% OFF</span>
         <div class="product-img">
-          <img src="img/IMG_1116.jpg" alt="Campera Doite Parka Térmica Darron" />
+          <img src="img/IMG_1116.jpg" alt="Campera Doite" />
+          <button class="gallery-arrow prev" onclick="event.stopPropagation();prevImg('campera-card')">‹</button>
+          <button class="gallery-arrow next" onclick="event.stopPropagation();nextImg('campera-card')">›</button>
+          <div class="gallery-dots" id="campera-card-dots"></div>
         </div>
         <div class="product-info">
           <div class="product-name">Campera Doite Parka Térmica Darron</div>
-          <div style="font-size:11px; color:#888; margin: 4px 0 8px; font-family:'Barlow',sans-serif; line-height:1.4;">Mustard · Talle L · Importada · Abrigadísima</div>
+          <div style="font-size:11px; color:#888; margin: 4px 0 8px; font-family:'Barlow',sans-serif; line-height:1.4;">Mustard · Talle L · Importada</div>
           <div class="product-prices">
             <span class="price-sale">$280.000</span>
             <span class="price-original">$320.000</span>
           </div>
           <div class="product-action">
-            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Campera%20Doite%20Parka%20T%C3%A9rmica%20Darron" class="wa-btn" target="_blank">
+            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Campera%20Doite%20Parka%20T%C3%A9rmica%20Darron" class="wa-btn" target="_blank" onclick="event.stopPropagation()">
               <span class="wa-icon">💬</span> Consultar
             </a>
           </div>
@@ -705,10 +928,13 @@
       </div>
 
       <!-- Producto 3 -->
-      <div class="product-card">
+      <div class="product-card" onclick="openModal('puma')">
         <span class="badge">13% OFF</span>
         <div class="product-img">
-          <img src="img/puma1.jpg" alt="Zapatillas Puma Botitas Rebound Rugged" />
+          <img src="img/puma1.jpg" alt="Puma Rebound Rugged" />
+          <button class="gallery-arrow prev" onclick="event.stopPropagation();prevImg('puma-card')">‹</button>
+          <button class="gallery-arrow next" onclick="event.stopPropagation();nextImg('puma-card')">›</button>
+          <div class="gallery-dots" id="puma-card-dots"></div>
         </div>
         <div class="product-info">
           <div class="product-name">Zapatillas Puma Botitas Rebound Rugged</div>
@@ -718,7 +944,7 @@
             <span class="price-original">$220.000</span>
           </div>
           <div class="product-action">
-            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesan%20las%20Zapatillas%20Puma%20Rebound%20Rugged" class="wa-btn" target="_blank">
+            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesan%20las%20Zapatillas%20Puma%20Rebound%20Rugged" class="wa-btn" target="_blank" onclick="event.stopPropagation()">
               <span class="wa-icon">💬</span> Consultar
             </a>
           </div>
@@ -726,10 +952,13 @@
       </div>
 
       <!-- Producto 4 -->
-      <div class="product-card">
+      <div class="product-card" onclick="openModal('gorrazul')">
         <span class="badge">17% OFF</span>
         <div class="product-img">
           <img src="img/gorrazul1.jpg" alt="Gorra Puma Dad Essentials No.1" />
+          <button class="gallery-arrow prev" onclick="event.stopPropagation();prevImg('gorrazul-card')">‹</button>
+          <button class="gallery-arrow next" onclick="event.stopPropagation();nextImg('gorrazul-card')">›</button>
+          <div class="gallery-dots" id="gorrazul-card-dots"></div>
         </div>
         <div class="product-info">
           <div class="product-name">Gorra Puma Dad Essentials No.1</div>
@@ -739,7 +968,7 @@
             <span class="price-original">$30.000</span>
           </div>
           <div class="product-action">
-            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Dad%20Essentials%20No.1" class="wa-btn" target="_blank">
+            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Dad%20Essentials%20No.1" class="wa-btn" target="_blank" onclick="event.stopPropagation()">
               <span class="wa-icon">💬</span> Consultar
             </a>
           </div>
@@ -747,10 +976,13 @@
       </div>
 
       <!-- Producto 5 -->
-      <div class="product-card">
+      <div class="product-card" onclick="openModal('gorranegra')">
         <span class="badge">6% OFF</span>
         <div class="product-img">
           <img src="img/gorranegra1.jpg" alt="Gorra Puma Dad Essentials" />
+          <button class="gallery-arrow prev" onclick="event.stopPropagation();prevImg('gorranegra-card')">‹</button>
+          <button class="gallery-arrow next" onclick="event.stopPropagation();nextImg('gorranegra-card')">›</button>
+          <div class="gallery-dots" id="gorranegra-card-dots"></div>
         </div>
         <div class="product-info">
           <div class="product-name">Gorra Puma Dad Essentials</div>
@@ -760,7 +992,7 @@
             <span class="price-original">$32.000</span>
           </div>
           <div class="product-action">
-            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Dad%20Essentials%20negra" class="wa-btn" target="_blank">
+            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Dad%20Essentials%20negra" class="wa-btn" target="_blank" onclick="event.stopPropagation()">
               <span class="wa-icon">💬</span> Consultar
             </a>
           </div>
@@ -768,10 +1000,13 @@
       </div>
 
       <!-- Producto 6 -->
-      <div class="product-card">
+      <div class="product-card" onclick="openModal('gorraplana')">
         <span class="badge">17% OFF</span>
         <div class="product-img">
           <img src="img/gorraplana1.jpg" alt="Gorra Puma Ess Plana" />
+          <button class="gallery-arrow prev" onclick="event.stopPropagation();prevImg('gorraplana-card')">‹</button>
+          <button class="gallery-arrow next" onclick="event.stopPropagation();nextImg('gorraplana-card')">›</button>
+          <div class="gallery-dots" id="gorraplana-card-dots"></div>
         </div>
         <div class="product-info">
           <div class="product-name">Gorra Puma Ess Plana</div>
@@ -781,7 +1016,7 @@
             <span class="price-original">$30.000</span>
           </div>
           <div class="product-action">
-            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Ess%20Plana" class="wa-btn" target="_blank">
+            <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Ess%20Plana" class="wa-btn" target="_blank" onclick="event.stopPropagation()">
               <span class="wa-icon">💬</span> Consultar
             </a>
           </div>
@@ -790,6 +1025,169 @@
 
     </div>
   </section>
+
+  <!-- MODALES -->
+  <div class="modal-overlay" id="modal-pollera" onclick="closeModal('pollera')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('pollera')">✕</button>
+      <div class="modal-gallery" id="modal-pollera-gallery">
+        <img src="img/asd4.jpg" class="active" /><img src="img/asd6.jpg" /><img src="img/asd3.jpg" /><img src="img/asd5.jpg" /><img src="img/asd2.jpg" />
+        <button class="modal-gallery-arrow prev" onclick="modalPrev('pollera')">‹</button>
+        <button class="modal-gallery-arrow next" onclick="modalNext('pollera')">›</button>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name">Pollera Nike WMNS ACG Smith Summit Zip-Off</div>
+        <div class="modal-desc">Color: Negro<br>Modelo: Smith Summit Zip-Off<br>Marca: Nike<br>Talle: S y M<br>Importada<br><br>ACG = All Conditions Gear. Ropa todo terreno de Nike. Pollera desmontable con múltiples bolsillos cargo y cinturón integrado.</div>
+        <div class="modal-prices">
+          <span class="modal-price-sale">$192.640</span>
+          <span class="modal-price-original">$250.000</span>
+        </div>
+        <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Pollera%20Nike%20WMNS%20ACG%20Smith%20Summit%20Zip-Off" class="modal-wa" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-campera" onclick="closeModal('campera')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('campera')">✕</button>
+      <div class="modal-gallery" id="modal-campera-gallery">
+        <img src="img/IMG_1116.jpg" class="active" /><img src="img/IMG_1112.jpg" /><img src="img/IMG_1118.jpg" /><img src="img/IMG_1119.jpg" /><img src="img/IMG_1110.jpg" />
+        <button class="modal-gallery-arrow prev" onclick="modalPrev('campera')">‹</button>
+        <button class="modal-gallery-arrow next" onclick="modalNext('campera')">›</button>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name">Campera Doite Parka Térmica Darron</div>
+        <div class="modal-desc">Color: Mustard<br>Modelo: Darron<br>Marca: Doite<br>Talle: L<br>Importada<br><br>Campera térmica abrigadísima, excelente calidad. Ideal para el invierno.</div>
+        <div class="modal-prices">
+          <span class="modal-price-sale">$280.000</span>
+          <span class="modal-price-original">$320.000</span>
+        </div>
+        <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Campera%20Doite%20Parka%20T%C3%A9rmica%20Darron" class="modal-wa" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-puma" onclick="closeModal('puma')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('puma')">✕</button>
+      <div class="modal-gallery" id="modal-puma-gallery">
+        <img src="img/puma1.jpg" class="active" /><img src="img/puma2.jpg" /><img src="img/puma3.jpg" /><img src="img/puma4.jpg" /><img src="img/puma5.jpg" /><img src="img/puma6.jpg" /><img src="img/puma7.jpg" /><img src="img/puma8.jpg" />
+        <button class="modal-gallery-arrow prev" onclick="modalPrev('puma')">‹</button>
+        <button class="modal-gallery-arrow next" onclick="modalNext('puma')">›</button>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name">Zapatillas Puma Botitas Rebound Rugged</div>
+        <div class="modal-desc">Color: Negro con detalles dorados<br>Modelo: Rebound Rugged<br>Marca: Puma<br>Talle: 9 US / 41 AR<br>Importadas<br><br>Botitas de cuero con herrajes dorados. Estilo urbano, comodidad total.</div>
+        <div class="modal-prices">
+          <span class="modal-price-sale">$192.400</span>
+          <span class="modal-price-original">$220.000</span>
+        </div>
+        <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesan%20las%20Zapatillas%20Puma%20Rebound%20Rugged" class="modal-wa" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-gorrazul" onclick="closeModal('gorrazul')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('gorrazul')">✕</button>
+      <div class="modal-gallery" id="modal-gorrazul-gallery">
+        <img src="img/gorrazul1.jpg" class="active" /><img src="img/gorrazul2.jpg" /><img src="img/gorrazul3.jpg" /><img src="img/gorrazul4.jpg" />
+        <button class="modal-gallery-arrow prev" onclick="modalPrev('gorrazul')">‹</button>
+        <button class="modal-gallery-arrow next" onclick="modalNext('gorrazul')">›</button>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name">Gorra Puma Dad Essentials No.1</div>
+        <div class="modal-desc">Color: Azul<br>Modelo: Essentials No.1<br>Marca: Puma<br>Talle: Única (ajustable)<br>Importada<br><br>Gorra dad hat con logo bordado Puma. Clásica y versátil.</div>
+        <div class="modal-prices">
+          <span class="modal-price-sale">$25.000</span>
+          <span class="modal-price-original">$30.000</span>
+        </div>
+        <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Dad%20Essentials%20No.1" class="modal-wa" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-gorranegra" onclick="closeModal('gorranegra')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('gorranegra')">✕</button>
+      <div class="modal-gallery" id="modal-gorranegra-gallery">
+        <img src="img/gorranegra1.jpg" class="active" /><img src="img/gorranegra2.jpg" /><img src="img/gorranegra3.jpg" /><img src="img/gorranegra4.jpg" />
+        <button class="modal-gallery-arrow prev" onclick="modalPrev('gorranegra')">‹</button>
+        <button class="modal-gallery-arrow next" onclick="modalNext('gorranegra')">›</button>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name">Gorra Puma Dad Essentials</div>
+        <div class="modal-desc">Color: Negro<br>Modelo: Essentials<br>Marca: Puma<br>Talle: Única (ajustable)<br>Importada<br><br>Gorra dad hat en negro total con logo bordado en blanco.</div>
+        <div class="modal-prices">
+          <span class="modal-price-sale">$30.000</span>
+          <span class="modal-price-original">$32.000</span>
+        </div>
+        <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Dad%20Essentials%20negra" class="modal-wa" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-gorraplana" onclick="closeModal('gorraplana')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('gorraplana')">✕</button>
+      <div class="modal-gallery" id="modal-gorraplana-gallery">
+        <img src="img/gorraplana1.jpg" class="active" /><img src="img/gorraplana2.jpg" /><img src="img/gorraplana3.jpg" /><img src="img/gorraplana4.jpg" />
+        <button class="modal-gallery-arrow prev" onclick="modalPrev('gorraplana')">‹</button>
+        <button class="modal-gallery-arrow next" onclick="modalNext('gorraplana')">›</button>
+      </div>
+      <div class="modal-info">
+        <div class="modal-name">Gorra Puma Ess Plana</div>
+        <div class="modal-desc">Color: Negro<br>Modelo: Ess<br>Marca: Puma<br>Talle: Única (ajustable)<br>Importada<br><br>Gorra plana con logo bordado plateado. Estilo urbano y streetwear.</div>
+        <div class="modal-prices">
+          <span class="modal-price-sale">$25.000</span>
+          <span class="modal-price-original">$30.000</span>
+        </div>
+        <a href="https://wa.me/541168448205?text=Hola!%20Me%20interesa%20la%20Gorra%20Puma%20Ess%20Plana" class="modal-wa" target="_blank">💬 Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Product images data
+    const products = {
+      'pollera': { imgs: ['img/asd4.jpg','img/asd6.jpg','img/asd3.jpg','img/asd5.jpg','img/asd2.jpg'] },
+      'campera': { imgs: ['img/IMG_1116.jpg','img/IMG_1112.jpg','img/IMG_1118.jpg','img/IMG_1119.jpg','img/IMG_1110.jpg'] },
+      'puma':    { imgs: ['img/puma1.jpg','img/puma2.jpg','img/puma3.jpg','img/puma4.jpg','img/puma5.jpg','img/puma6.jpg','img/puma7.jpg','img/puma8.jpg'] },
+      'gorrazul':   { imgs: ['img/gorrazul1.jpg','img/gorrazul2.jpg','img/gorrazul3.jpg','img/gorrazul4.jpg'] },
+      'gorranegra': { imgs: ['img/gorranegra1.jpg','img/gorranegra2.jpg','img/gorranegra3.jpg','img/gorranegra4.jpg'] },
+      'gorraplana': { imgs: ['img/gorraplana1.jpg','img/gorraplana2.jpg','img/gorraplana3.jpg','img/gorraplana4.jpg'] },
+    };
+
+    const cardIndex = {};
+
+    function openModal(id) {
+      document.getElementById('modal-' + id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById('modal-' + id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function modalNav(id, dir) {
+      const gallery = document.getElementById('modal-' + id + '-gallery');
+      const imgs = gallery.querySelectorAll('img');
+      let current = [...imgs].findIndex(i => i.classList.contains('active'));
+      imgs[current].classList.remove('active');
+      current = (current + dir + imgs.length) % imgs.length;
+      imgs[current].classList.add('active');
+    }
+    function modalPrev(id) { modalNav(id, -1); }
+    function modalNext(id) { modalNav(id, +1); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
   <!-- CONTACT STRIP -->
   <div class="contact-strip" id="contacto">
