@@ -26,68 +26,106 @@
       overflow-x: hidden;
     }
 
-    /* ── NAVBAR ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 64px;
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-mid);
-    }
+    /* nav legacy removed */
 
-    /* ── NAVBAR NUEVO ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 80px;
-      background: var(--white);
-      border-bottom: 1px solid var(--gray-mid);
-    }
-
-    .nav-brand {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+    /* ── HEADER ── */
+    header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      justify-content: center;
+      padding: 40px 20px 24px;
+      border-bottom: 1px solid var(--gray-mid);
+      gap: 8px;
     }
 
-    .nav-brand img {
-      height: 28px;
+    .header-logo {
+      height: 64px;
       object-fit: contain;
     }
 
-    .nav-brand-name {
+    .header-name {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.18em;
+      font-size: 28px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--black);
       line-height: 1;
     }
 
-    .nav-brand-sub {
+    .header-sub {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 400;
-      font-size: 10px;
-      letter-spacing: 0.22em;
+      font-size: 13px;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--gray-dark);
       line-height: 1;
     }
+
+    .header-nav {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--black);
+      transition: width 0.2s ease;
+    }
+
+    .header-nav a:hover::after { width: 100%; }
+
+    .header-dropdown { position: relative; }
+
+    .header-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      min-width: 160px;
+      padding: 8px 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 10;
+    }
+
+    .header-dropdown:hover .header-dropdown-menu { display: block; }
+
+    .header-dropdown-menu a {
+      display: block;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .header-dropdown-menu a:hover { background: var(--gray-light); }
+    .header-dropdown-menu a::after { display: none; }
 
     .nav-links {
       display: flex;
@@ -129,7 +167,6 @@
 
     /* ── HERO ── */
     .hero {
-      margin-top: 64px;
       height: calc(100vh - 64px);
       display: flex;
       flex-direction: column;
@@ -767,12 +804,15 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <ul class="nav-links">
-      <li class="nav-dropdown">
+  <!-- HEADER -->
+  <header>
+    <img src="img/logo.jpeg" alt="Luke The Dealer" class="header-logo" />
+    <span class="header-name">Luke The Dealer</span>
+    <span class="header-sub">Fashion Dealer</span>
+    <ul class="header-nav">
+      <li class="header-dropdown">
         <a href="#shop">Shop ▾</a>
-        <div class="dropdown-menu">
+        <div class="header-dropdown-menu">
           <a href="#shop">Remeras</a>
           <a href="#shop">Hoodies / Buzos</a>
           <a href="#shop">Camperas</a>
@@ -785,15 +825,7 @@
       <li><a href="#sale">Sale</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-
-    <div class="nav-brand">
-      <img src="img/logo.jpeg" alt="Luke The Dealer" />
-      <span class="nav-brand-name">Luke The Dealer</span>
-      <span class="nav-brand-sub">Fashion Dealer</span>
-    </div>
-
-    <span class="nav-contact">📍 Buenos Aires</span>
-  </nav>
+  </header>
 
 
 
