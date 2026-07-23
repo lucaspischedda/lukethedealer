@@ -98,9 +98,10 @@
       line-height: 1;
     }
 
-    /* ── MOBILE MENU ── */
+    .header-left { display: none; }
+
     .mobile-menu-btn {
-      display: none;
+      display: block;
       position: absolute;
       left: 16px;
       top: 50%;
@@ -108,9 +109,10 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 24px;
       color: var(--black);
       padding: 4px;
+      letter-spacing: -2px;
     }
 
     .mobile-menu {
@@ -145,7 +147,6 @@
 
     @media (max-width: 768px) {
       .header-left { display: none; }
-      .mobile-menu-btn { display: block; }
     }
 
     .nav-links {
