@@ -131,7 +131,7 @@
 
     .header-left a:hover::after { width: 100%; }
 
-    .header-item { position: relative; padding-bottom: 12px; }
+    .header-item { position: relative; }
 
     .header-item > a::after { display: none; }
 
@@ -148,7 +148,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
-    .header-item:hover .header-dropdown { display: block; }
+    .header-dropdown.open { display: block; }
 
     .header-dropdown a {
       display: block;
@@ -897,8 +897,8 @@
     <!-- PC: categorías a la izquierda con dropdown -->
     <div class="header-left">
       <div class="header-item">
-        <a href="#">Hombre ▾</a>
-        <div class="header-dropdown">
+        <a href="#" onclick="toggleDropdown(event,'dd-hombre')">Hombre ▾</a>
+        <div class="header-dropdown" id="dd-hombre">
           <a href="#shop">Remeras</a>
           <a href="#shop">Camisas</a>
           <a href="#shop">Chombas</a>
@@ -908,8 +908,8 @@
         </div>
       </div>
       <div class="header-item">
-        <a href="#">Mujer ▾</a>
-        <div class="header-dropdown">
+        <a href="#" onclick="toggleDropdown(event,'dd-mujer')">Mujer ▾</a>
+        <div class="header-dropdown" id="dd-mujer">
           <a href="#shop">Remeras</a>
           <a href="#shop">Pantalones</a>
           <a href="#shop">Polleras</a>
@@ -917,8 +917,8 @@
       </div>
       <a href="#shop">Antigüedades</a>
       <div class="header-item">
-        <a href="#">Hot 🔥 ▾</a>
-        <div class="header-dropdown">
+        <a href="#" onclick="toggleDropdown(event,'dd-hot')">Hot 🔥 ▾</a>
+        <div class="header-dropdown" id="dd-hot">
           <a href="#sale">Ver ofertas</a>
         </div>
       </div>
@@ -950,9 +950,21 @@
     function toggleMenu() {
       document.getElementById('mobile-menu').classList.toggle('open');
     }
+
+    function toggleDropdown(e, id) {
+      e.preventDefault();
+      const all = document.querySelectorAll('.header-dropdown');
+      all.forEach(d => { if (d.id !== id) d.classList.remove('open'); });
+      document.getElementById(id).classList.toggle('open');
+    }
+
     document.addEventListener('click', function(e) {
-      const menu = document.getElementById('mobile-menu');
-      if (!e.target.closest('header')) menu.classList.remove('open');
+      if (!e.target.closest('.header-left')) {
+        document.querySelectorAll('.header-dropdown').forEach(d => d.classList.remove('open'));
+      }
+      if (!e.target.closest('header')) {
+        document.getElementById('mobile-menu').classList.remove('open');
+      }
     });
   </script>
 
