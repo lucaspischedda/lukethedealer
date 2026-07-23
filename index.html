@@ -140,13 +140,34 @@
       position: absolute;
       top: 100%;
       left: 0;
+      padding-top: 8px;
+      z-index: 100;
+    }
+
+    .header-dropdown-inner {
       background: var(--white);
       border: 1px solid var(--gray-mid);
       min-width: 160px;
       padding: 8px 0;
-      z-index: 100;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
+
+    .header-item:hover .header-dropdown { display: block; }
+
+    .header-dropdown a {
+      display: block;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .header-dropdown a:hover { background: var(--gray-light); }
+    .header-dropdown a::after { display: none !important; }
 
     .header-dropdown.open { display: block; }
 
@@ -897,29 +918,35 @@
     <!-- PC: categorías a la izquierda con dropdown -->
     <div class="header-left">
       <div class="header-item">
-        <a href="#" onclick="toggleDropdown(event,'dd-hombre')">Hombre ▾</a>
-        <div class="header-dropdown" id="dd-hombre">
-          <a href="#shop">Remeras</a>
-          <a href="#shop">Camisas</a>
-          <a href="#shop">Chombas</a>
-          <a href="#shop">Buzos</a>
-          <a href="#shop">Camperas</a>
-          <a href="#shop">Pantalones</a>
+        <a href="#">Hombre ▾</a>
+        <div class="header-dropdown">
+          <div class="header-dropdown-inner">
+            <a href="#shop">Remeras</a>
+            <a href="#shop">Camisas</a>
+            <a href="#shop">Chombas</a>
+            <a href="#shop">Buzos</a>
+            <a href="#shop">Camperas</a>
+            <a href="#shop">Pantalones</a>
+          </div>
         </div>
       </div>
       <div class="header-item">
-        <a href="#" onclick="toggleDropdown(event,'dd-mujer')">Mujer ▾</a>
-        <div class="header-dropdown" id="dd-mujer">
-          <a href="#shop">Remeras</a>
-          <a href="#shop">Pantalones</a>
-          <a href="#shop">Polleras</a>
+        <a href="#">Mujer ▾</a>
+        <div class="header-dropdown">
+          <div class="header-dropdown-inner">
+            <a href="#shop">Remeras</a>
+            <a href="#shop">Pantalones</a>
+            <a href="#shop">Polleras</a>
+          </div>
         </div>
       </div>
       <a href="#shop">Antigüedades</a>
       <div class="header-item">
-        <a href="#" onclick="toggleDropdown(event,'dd-hot')">Hot 🔥 ▾</a>
-        <div class="header-dropdown" id="dd-hot">
-          <a href="#sale">Ver ofertas</a>
+        <a href="#">Hot 🔥 ▾</a>
+        <div class="header-dropdown">
+          <div class="header-dropdown-inner">
+            <a href="#sale">Ver ofertas</a>
+          </div>
         </div>
       </div>
     </div>
@@ -951,17 +978,7 @@
       document.getElementById('mobile-menu').classList.toggle('open');
     }
 
-    function toggleDropdown(e, id) {
-      e.preventDefault();
-      const all = document.querySelectorAll('.header-dropdown');
-      all.forEach(d => { if (d.id !== id) d.classList.remove('open'); });
-      document.getElementById(id).classList.toggle('open');
-    }
-
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('.header-left')) {
-        document.querySelectorAll('.header-dropdown').forEach(d => d.classList.remove('open'));
-      }
       if (!e.target.closest('header')) {
         document.getElementById('mobile-menu').classList.remove('open');
       }
